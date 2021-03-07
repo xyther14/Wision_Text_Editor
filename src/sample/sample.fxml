@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <BorderPane layoutX="-3.0" prefHeight="488.0" prefWidth="668.0">
+         <left>
+            <Pane prefHeight="488.0" prefWidth="242.0" styleClass="linear-grad" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="53.0" fitWidth="48.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_note_100px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="85.0" layoutY="24.0" prefHeight="28.0" prefWidth="130.0" text="Wision Text Editor" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Light" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="newBtn" layoutX="2.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="34.0" prefWidth="240.0" styleClass="buttonMenu" stylesheets="@../css/style.css" text="NEW" />
+                  <Button fx:id="openBtn" layoutX="2.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="34.0" prefWidth="240.0" styleClass="buttonMenu" stylesheets="@../css/style.css" text="OPEN" />
+                  <Button fx:id="compressBtn" disable="true" layoutX="2.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="34.0" prefWidth="240.0" styleClass="buttonMenu" stylesheets="@../css/style.css" text="FIND AND REPLACE" />
+                  <Button fx:id="deleteFile" disable="true" layoutX="1.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="34.0" prefWidth="240.0" styleClass="buttonMenu" stylesheets="@../css/style.css" text="DELETE FILE FROM DISK" />
+                  <Pane fx:id="compressPane" layoutX="1.0" layoutY="95.0" prefHeight="245.0" prefWidth="241.0" styleClass="linear-grad1" stylesheets="@../css/style.css" visible="false">
+                     <children>
+                        <ImageView fx:id="closePane" fitHeight="35.0" fitWidth="35.0" layoutX="192.0" layoutY="14.0" onMouseClicked="#handleMouseEvent" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_multiply_100px.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="14.0" layoutY="83.0" prefHeight="22.0" prefWidth="38.0" text="FIND" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Light" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="findText" layoutX="76.0" layoutY="82.0" prefHeight="27.0" prefWidth="158.0">
+                           <font>
+                              <Font name="Segoe UI Light" size="12.0" />
+                           </font></TextField>
+                        <Label layoutX="8.0" layoutY="127.0" prefHeight="26.0" prefWidth="61.0" text="REPLACE" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Light" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="replaceText" layoutX="77.0" layoutY="126.0" prefHeight="27.0" prefWidth="159.0">
+                           <font>
+                              <Font name="Segoe UI Light" size="12.0" />
+                           </font></TextField>
+                        <Button fx:id="replaceBtn" layoutX="153.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleButtonEvent" text="COMPRESS" />
+                        <Label fx:id="compressStatus" layoutX="50.0" layoutY="221.0" prefHeight="20.0" prefWidth="142.0" text="Compression Succesful!" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Segoe UI Light" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="14.0" layoutY="98.0" prefHeight="28.0" prefWidth="220.0">
+                     <children>
+                        <Label layoutY="4.0" text="Working on " textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Light" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fileName" layoutX="72.0" layoutY="4.0" prefHeight="20.0" prefWidth="130.0" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Light" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Circle fx:id="exitBtn" fill="#f41e1e" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleMouseEvent" radius="7.0" stroke="WHITE" strokeType="INSIDE" />
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="utilPane" layoutX="11.0" layoutY="2.0" prefHeight="30.0" prefWidth="411.0" visible="false">
+                     <children>
+                        <Button fx:id="copyAll" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_copy_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Copy " />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="saveBtn" layoutX="43.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_save_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Save As" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="cutBtn" layoutX="85.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_cut_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Cut" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="deleteBtn" layoutX="128.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_remove_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Remove " />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="translateBtn" layoutX="172.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_google_translate_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Translate" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="readBtn" layoutX="212.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_speaker_100px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Read Aloud" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="saveExtBtn" disable="true" layoutX="253.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_save_100px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Save" />
+                           </tooltip>
+                        </Button>
+                        <Button fx:id="webBtn" layoutX="294.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="27.0" stylesheets="@../css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons8_website_100px_2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Web Search" />
+                           </tooltip>
+                        </Button>
+                        <Slider fx:id="fontSize" blockIncrement="2.0" layoutX="335.0" layoutY="1.0" max="30.0" min="14.0" onMouseDragged="#handleMouseEvent" prefHeight="26.0" prefWidth="69.0" stylesheets="@../css/style.css" value="14.0">
+                           <tooltip>
+                              <Tooltip text="Font Size" />
+                           </tooltip></Slider>
+                     </children>
+                  </Pane>
+                  <TextArea fx:id="noteArea" layoutX="10.0" layoutY="31.0" prefHeight="413.0" prefWidth="400.0" visible="false">
+                     <font>
+                        <Font name="Segoe UI Light" size="14.0" />
+                     </font></TextArea>
+                  <Pane fx:id="searchPane" layoutX="7.0" layoutY="445.0" prefHeight="35.0" prefWidth="411.0" visible="false">
+                     <children>
+                        <TextField fx:id="searchBox" alignment="TOP_LEFT" layoutY="1.0" prefHeight="26.0" prefWidth="285.0" stylesheets="@../css/style.css">
+                           <font>
+                              <Font name="Segoe UI Light" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="findBtn" layoutX="295.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="0.0" prefWidth="52.0" stylesheets="@../css/style.css" text="FIND" />
+                        <Button fx:id="nextBtn" layoutX="354.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleButtonEvent" prefHeight="27.0" prefWidth="49.0" stylesheets="@../css/style.css" text="NEXT" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="statusPane" layoutX="37.0" layoutY="56.0" prefHeight="356.0" prefWidth="357.0">
+                     <children>
+                        <ImageView fx:id="statusImg" fitHeight="181.0" fitWidth="195.0" layoutX="84.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../mainImg.gif" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="statusLbl" alignment="CENTER" layoutX="61.0" layoutY="255.0" prefHeight="32.0" prefWidth="246.0" text="Create a new file or open an existing one">
+                           <font>
+                              <Font name="Segoe UI Light" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
